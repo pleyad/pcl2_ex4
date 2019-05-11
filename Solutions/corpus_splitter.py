@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from lxml import etree
-from typing import Any, BinaryIO, Iterable
+from typing import Any, BinaryIO, Generator
 import gzip
 import os
 import random
@@ -10,7 +10,7 @@ import random
 BASENAME = 'abstracts.'
 
 
-def text_iterator(infile: BinaryIO) -> Iterable[str]:
+def text_iterator(infile: BinaryIO) -> Generator[str]:
     '''Yields lines.'''
     for _, doc in etree.iterparse(infile, tag='document'):
         text = []
